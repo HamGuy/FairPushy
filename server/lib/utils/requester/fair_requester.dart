@@ -13,7 +13,7 @@ class FairRequester {
 
   ///cdn获取token
   Future<dynamic> getToken(String fileName, String bucketName) async {
-    return await FairRequesterDio(baseUrl: FairRequesterConstants.cdnTokenHost)
+    return await FairRequesterDio() //baseUrl: FairRequesterConstants.cdnTokenHost
         .get(FairRequesterConstants.getCdnToken(),
             params: {"filename": fileName, "bucket": bucketName});
   }
@@ -22,7 +22,7 @@ class FairRequester {
   Future<dynamic> uploadFile(
       String fileName, FormData formData, String token) async {
     return await FairRequesterDio(
-            baseUrl: FairRequesterConstants.cdnFileHost,
+            // baseUrl: FairRequesterConstants.cdnFileHost,
             headers: {"Authorization": token})
         .postFormData(FairRequesterConstants.cdnUploadFile() + fileName,
             params: formData);
@@ -37,8 +37,8 @@ class FairRequester {
   * */
   Future<dynamic> onlineBuild(String patchGitUrl, String patchGitBranch,
       String patchBuildName, String flutterVersion) async {
-    return await FairRequesterDio(
-            baseUrl: FairRequesterConstants.packingPlatformHost)
+    return await FairRequesterDio()
+            // baseUrl: FairRequesterConstants.packingPlatformHost)
         .post(FairRequesterConstants.onlineBuildInPackingPlatform(), params: {
       "patchGitUrl": patchGitUrl,
       "patchGitBranch": patchGitBranch,
@@ -52,8 +52,8 @@ class FairRequester {
   * buildId  在线构建任务id
   * */
   Future<dynamic> checkBuildStatus(String buildId) async {
-    return await FairRequesterDio(
-            baseUrl: FairRequesterConstants.packingPlatformHost)
+    return await FairRequesterDio()
+            // baseUrl: FairRequesterConstants.packingPlatformHost)
         .post(FairRequesterConstants.checkBuildStatusInPackingPlatform(),
             params: {
           "buildId": buildId,

@@ -3,13 +3,16 @@ import 'package:fair_management_web/route/route_path.dart';
 import 'package:fair_management_web/route/router_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'config/env_config.dart';
 
 void main() {
   _init();
   runApp(const MyApp());
 }
 
-void _init() {}
+void _init() {
+  EnvConfig.initConfig();
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

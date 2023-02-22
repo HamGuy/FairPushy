@@ -57,8 +57,7 @@ class Api {
   Future<dynamic> uploadPathFile(String fileName, formData) async {
     return await FairDio.instance.uploadFile(
         '/kLRHgFeDkLkL/dynamics/' + fileName,
-        data: formData,
-        baseUrl: FairDio.uploadBaseUrl);
+        data: formData);
   }
 
   ///创建项目

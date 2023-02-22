@@ -23,7 +23,8 @@ class FairRequesterDio {
   Dio get dio => _dio;
 
   ///不同配置的请求
-  FairRequesterDio({String baseUrl = FairRequesterConstants.baseUrl, Map<String, dynamic>? headers}) {
+  FairRequesterDio({Map<String, dynamic>? headers}) {
+    String baseUrl = FairRequesterConstants.baseUrl;
     BaseOptions options = BaseOptions(
       baseUrl: baseUrl,
       connectTimeout: connectTimeout,
@@ -135,7 +136,8 @@ class FairRequesterDio {
   /// [data] The request data
   ///
   Future<Response?> uploadFile(String path,
-      {String baseUrl = FairRequesterConstants.baseUrl, FormData? data}) async {
+      {FormData? data}) async {
+    String baseUrl = FairRequesterConstants.baseUrl;
     /// 打印请求相关信息：请求地址、请求方式、请求参数
     print("请求地址：【$baseUrl$path】");
     print('请求参数：' + data.toString());

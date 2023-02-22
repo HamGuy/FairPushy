@@ -4,12 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'base_result.dart';
+import '../config/env_config.dart';
 
 class FairDio {
-  static const String baseUrl = 'http://127.0.0.1:8080/'; //测试地址
-  static const String uploadBaseUrl = 'http://127.0.0.1:8080/'; //上传文件
 
-  static const String baseUrlTo58 = ''; //测试环境
+  // static const String uploadBaseUrl = 'http://127.0.0.1:8080/'; //上传文件
+  // static const String baseUrlTo58 = ''; //测试环境
 
   /// 连接服务器超时时间，单位是毫秒.
   static int connectTimeout = 10000;
@@ -31,7 +31,7 @@ class FairDio {
 
   FairDio() {
     BaseOptions options = BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: EnvConfig.envConfig.baseUrl,
       connectTimeout: connectTimeout,
       receiveTimeout: receiveTimeout,
       responseType: ResponseType.plain,
@@ -224,7 +224,8 @@ class FairDio {
 
   /// 上传文件
   Future<Response?> uploadFile(String path,
-      {String baseUrl = baseUrl, @required FormData? data}) async {
+      {@required FormData? data}) async {
+        String baseUrl = EnvConfig.envConfig.baseUploadUrl;
     /// 打印请求相关信息：请求地址、请求方式、请求参数
     debugPrint("请求地址：【$baseUrl$path】");
     debugPrint('请求参数：' + data.toString());

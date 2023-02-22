@@ -7,4 +7,6 @@ mysql_password:
 mysql_host: 
 mysql_port: 
 mysql_database: 
+base_url:
+packing_platform_host:
 ''';
